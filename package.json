@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production",
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
     "test": "jest --config=jest.config.json"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "enzyme": "3.0.0",
     "enzyme-adapter-react-16": "1.0.0",
     "enzyme-to-json": "3.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "jest": "^24.7.1",
     "moment": "2.18.1",
     "node-sass": "^4.11.0",
