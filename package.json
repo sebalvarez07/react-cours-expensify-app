@@ -1,0 +1,46 @@
+{
+  "name": "Project_starter_v1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Seb",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode production",
+    "test": "jest --config=jest.config.json"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "enzyme": "3.0.0",
+    "enzyme-adapter-react-16": "1.0.0",
+    "enzyme-to-json": "3.0.1",
+    "jest": "^24.7.1",
+    "moment": "2.18.1",
+    "node-sass": "^4.11.0",
+    "normalize.css": "^8.0.1",
+    "raf": "3.3.2",
+    "react": "^16.8.6",
+    "react-addons-shallow-compare": "15.6.0",
+    "react-dates": "12.7.0",
+    "react-dom": "^16.8.6",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-test-renderer": "16.0.0",
+    "redux": "^4.0.1",
+    "sass-loader": "^7.1.0",
+    "uuid": "^3.3.2",
+    "webpack-dev-server": "^3.2.1"
+  }
+}

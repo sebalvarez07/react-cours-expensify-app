@@ -1,0 +1,158 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fswiss\fcharset0 Helvetica-Oblique;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red87\green87\blue87;\red0\green0\blue0;\red0\green0\blue0;
+\red255\green255\blue255;\red203\green203\blue202;\red141\green213\blue254;\red194\green125\blue100;\red67\green192\blue160;
+\red197\green83\blue86;\red205\green172\blue105;\red212\green213\blue153;\red202\green202\blue202;\red255\green255\blue255;
+\red0\green0\blue0;\red255\green255\blue255;\red194\green125\blue100;\red203\green203\blue202;\red197\green83\blue86;
+\red205\green172\blue105;\red212\green213\blue153;\red202\green202\blue202;}
+{\*\expandedcolortbl;;\cssrgb\c41531\c41531\c41531;\csgray\c0;\cssrgb\c0\c1\c1;
+\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c83320\c83320\c83112;\cssrgb\c61545\c86704\c99884;\cssrgb\c80772\c56796\c46790;\cssrgb\c30631\c78928\c69023;
+\cssrgb\c82002\c41153\c40948;\cssrgb\c84195\c72766\c48633;\cssrgb\c86247\c86215\c66392;\cssrgb\c83137\c83137\c83137;\cssrgb\c100000\c100000\c99985\c0;
+\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c99985\c0;\cssrgb\c80772\c56796\c46790;\cssrgb\c83320\c83320\c83112;\cssrgb\c82002\c41153\c40948;
+\cssrgb\c84195\c72766\c48633;\cssrgb\c86247\c86215\c66392;\cssrgb\c83137\c83137\c83137;}
+\margl1440\margr1440\vieww13420\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf0 Webpack, Babel, React & Yarn
+\f1\b0\fs24 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\i \cf2 From: https://www.valentinog.com/blog/react-webpack-babel/
+\f1\i0 \cf0 \
+\
+
+\f0\b\fs36 Project Starter
+\f1\b0\fs24 \
+\
+\
+1. Create JSON file\
+	\
+	yarn init\
+\
+2. Install webpack\
+\
+	yarn add webpack --dev\
+\
+	yarn add webpack-cli --dev \
+\
+3. Add scripts to JSON file\
+\
+	\'93scripts\'94: \{\
+\
+		\'93build\'94: \'93webpack \'97mode production\'94\
+	\}\
+\
+4. Install loaders - landers are like transformers. They take something as input and produce something else as output. We need this as most of React is written in ES6.\
+\
+So we need to install babel present env (compiling ES6 down to ES5), and babel preset react (compiles JSX and other stuff down to JS)\
+\
+	
+\f3\fs22 \cf3 \CocoaLigature0 yarn add @babel/core --dev			// Allows us to run babel through webpack\
+	yarn add babel-loader --dev			// Transformer\
+	yarn add @babel/preset-env --dev		// Preset to compile ES6\
+	yarn add @babel/preset-react --dev		// Preset to compile React
+\f1\fs24 \cf0 \CocoaLigature1 \
+\
+5. Create .babelrc file for preset reference (webpack looks at this)\
+	\
+	 
+\f3 \cf4 \cb5 \expnd0\expndtw0\kerning0
+\{\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4     		"presets": [\
+       		 "@babel/preset-env", \
+		      "@babel/preset-react"\
+    		]\
+	\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\
+6. Create webpack.config.js file\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f3 \cf4 \cb5 \expnd0\expndtw0\kerning0
+module.exports = \{\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4     module: \{\
+        rules: [\
+            \{\
+                test: /\\.js$/,\
+                loader: 'babel-loader',\
+                exclude: /node_modules/\
+            \}\
+        ]\
+    \}\
+\}\cf13 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \
+\
+\
+6. Add react and react-do to node_modules\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs22 \cf3 \CocoaLigature0 yarn add react --dev\
+yarn add react-dom --dev
+\f1\fs24 \cf0 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+7. Install devServer\
+\
+	yarn add webpack-dev-server\
+\
+And add to scripts\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf4 \cb14 	
+\f3 \expnd0\expndtw0\kerning0
+"start": "webpack-dev-server --open --mode development",\cf13 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \
+\
+\
+\
+
+\f0\b\fs48 SASS
+\f1\b0\fs24 \
+\
+\
+1. Add sass-loader and sass-node, also add style-loader and css-loader\
+\
+	yarn add sass-loader 	// Turns JS module into css extorted into a separate file\
+	yarn add sass-node		// Allows us to compile SCSS files to css at fast speed\
+\
+2. Change webpack.config.js file\
+\
+	
+\f3 \cf15 \cb16 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec17 rules\cf15 \cb16 \strokec18 : [\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf15 \cb16 \strokec18             \{\
+                \cf15 \cb16 \strokec17 loader\cf15 \cb16 \strokec18 : \cf15 \cb16 \strokec17 'babel-loader'\cf15 \cb16 \strokec18 ,\
+                \cf15 \cb16 \strokec17 test\cf15 \cb16 \strokec18 :\cf15 \cb16 \strokec19  /\cf15 \cb16 \strokec20 \\.\cf15 \cb16 \strokec19 js\cf15 \cb16 \strokec21 $\cf15 \cb16 \strokec19 /\cf15 \cb16 \strokec18 ,\
+                \cf15 \cb16 \strokec17 exclude\cf15 \cb16 \strokec18 :\cf15 \cb16 \strokec19  /node_modules/\cf15 \cb16 \strokec18 \
+            \},\
+            \{\
+                \cf15 \cb16 \strokec17 test\cf15 \cb16 \strokec18 :\cf15 \cb16 \strokec19  /\cf15 \cb16 \strokec20 \\.\cf15 \cb16 \strokec19 s\cf15 \cb16 \strokec20 ?\cf15 \cb16 \strokec19 css/\cf15 \cb16 \strokec18 ,\
+                \cf15 \cb16 \strokec17 use\cf15 \cb16 \strokec18 : [\
+                    \cf15 \cb16 \strokec17 'style-loader'\cf15 \cb16 \strokec18 ,\
+                    \cf15 \cb16 \strokec17 'css-loader'\cf15 \cb16 \strokec18 ,\
+                    \cf15 \cb16 \strokec17 'sass-loader'\cf15 \cb16 \strokec18 \
+                ]\
+            \}\
+    ]\cf22 \cb1 \strokec22 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
+\
+3. Import .scss file to the main app.js and began using!\
+\
+}
