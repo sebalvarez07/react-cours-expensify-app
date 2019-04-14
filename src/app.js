@@ -11,10 +11,6 @@ import 'react-dates/lib/css/_datepicker.css';
 
 const store = configureStore();
 
-store.dispatch(addExpense({ description: 'Water Bill', amount: 32 }));
-store.dispatch(addExpense({ description: 'Gas Bill', amount: 3000 }));
-store.dispatch(addExpense({ description: 'Rent', amount: 1095, createdAt: moment().valueOf() }));
-
 /*
     Provider lets us define a store that we want to provide to all of our components inside AppRouter
 */
