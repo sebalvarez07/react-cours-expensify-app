@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import expensesTotal from '../selectors/expenses-total';
-import getVisibleExpenes from '../selectors/expenses';
+import selectExpenses from '../selectors/expenses';
 import numeral from 'numeral';
 
 export const ExpensesSummary = ({expenseCount, expensesTotal}) => {
@@ -16,9 +16,10 @@ export const ExpensesSummary = ({expenseCount, expensesTotal}) => {
 };
 
 const mapStateToProps = (state) => { 
+    const visibleExpenses = selectExpenses(state.expenses, state.filters);
     return {
-        expenseCount: getVisibleExpenes(state.expenses, state.filters).length,
-        expensesTotal: expensesTotal(getVisibleExpenes(state.expenses, state.filters))
+        expenseCount: visibleExpenses.length,
+        expensesTotal: expensesTotal(visibleExpenses)
     }
 };
 
