@@ -73,6 +73,7 @@ class ExpenseForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
+        // Form validation: no description or no amount?
         if(!this.state.description || !this.state.amount){
             this.setState(() => ({error: 'Please provide a description and amount'}));
         } else {
