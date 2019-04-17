@@ -1,7 +1,7 @@
 // Expenses Reducer
 
 const expensesReduceDefault = [];
-
+ 
 // The state is simply an array --> the expense object is created inside the combineReducers() call
 const expensesReducer = (state = expensesReduceDefault, action) => {
     switch(action.type){
@@ -21,8 +21,9 @@ const expensesReducer = (state = expensesReduceDefault, action) => {
                     } else {
                         return expense;
                     }
-                })
-            
+                });
+        case 'SET_EXPENSES':
+                return action.expenses;
         default: 
             return state
     }

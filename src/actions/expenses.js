@@ -19,7 +19,7 @@ export const startAddExpense = (expenseData = {}) => {
 
         const expense = {description, note, amount,createdAt };
 
-        // Push().then() comes back with a reference (red) to the ojbect that was just added (in this case the id)
+        // Push().then() comes back with a reference (ref) to the ojbect that was just added (in this case the id)
         return database.ref('expenses').push(expense).then((ref) => {
             dispatch(addExpense({
                 id: ref.key,
@@ -41,3 +41,27 @@ export const removeExpense = ({id} = {}) => ({
     type: 'REMOVE_EXPENSE',
     id
 });
+
+
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+}); 
+
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        
+        return database.ref('expenses').once('value').then((snapshot) => {
+            let expenses = []
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+            });
+
+            dispatch(setExpenses(expenses));
+        });
+    }
+};

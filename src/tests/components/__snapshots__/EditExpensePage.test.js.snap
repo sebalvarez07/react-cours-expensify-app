@@ -8,7 +8,7 @@ exports[`Should render edit expense 1`] = `
         "amount": 195,
         "createdAt": 0,
         "description": "Gum",
-        "id": 1,
+        "id": "1",
         "note": "",
       }
     }

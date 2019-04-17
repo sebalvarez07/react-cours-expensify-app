@@ -1,4 +1,4 @@
-import { addExpense, editExpense, removeExpense, startAddExpense } from '../../actions/expenses';
+import { addExpense, editExpense, removeExpense, startAddExpense, setExpenses, startSetExpenses } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -6,6 +6,22 @@ import database from '../../firebase/firebase';
 import moment from 'moment';
 
 const createMockStore = configureStore([thunk]);
+
+// Setup dummy data and write it to the database
+beforeEach((done) => {
+
+    const expensesData = {};
+
+    // Here we populate the expensesData object with the array contents. Making each array element an expense object 
+    expenses.forEach(({id, description, note, amount, createdAt }) => {
+        // ExpensesData[id] produces the same result as expensesData.id
+        // If it doesn't exist it will create the property and then populate it
+        expensesData[id] = { description, note, amount, createdAt }
+    });
+
+    database.ref('expenses').set(expensesData).then(() => done());
+    
+});
 
 test('Should setup remove expense action object', () => {
     const action = removeExpense({ id: '123abc' });
@@ -104,4 +120,28 @@ test('Should add expense to database and store with DEFAULT values', (done) => {
             // The done function must be placed inside and at the end the latest async function that fires
             done();
         });
+});
+
+
+test('Should set action object for setExpenses action', () => {
+
+    const action = setExpenses(expenses);
+    expect(action).toEqual({
+        type: 'SET_EXPENSES',
+        expenses
+    })
+});
+
+test('Should dispatch setExpenses action using database expenses', (done)=>{
+
+    const store = createMockStore({});
+    
+    store.dispatch(startSetExpenses()).then(() => {
+        const action = store.getActions();
+        expect(action[0]).toEqual({
+            type: 'SET_EXPENSES',
+            expenses
+        });
+        done();
+    });
 });
