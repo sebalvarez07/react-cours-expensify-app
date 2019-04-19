@@ -7,6 +7,9 @@ import moment from 'moment';
 
 const createMockStore = configureStore([thunk]);
 
+const uid =  'abc123';
+const defaultAuthState = {auth: { uid }}
+
 // Setup dummy data and write it to the database
 beforeEach((done) => {
 
@@ -19,7 +22,7 @@ beforeEach((done) => {
         expensesData[id] = { description, note, amount, createdAt }
     });
 
-    database.ref('expenses').set(expensesData).then(() => done());
+    database.ref(`users/${uid}/expenses`).set(expensesData).then(() => done());
     
 });
 
@@ -36,7 +39,8 @@ test('Should setup remove expense action object', () => {
 
 test('Should remove expense from database and dispatch action to store', (done) => {
 
-    const store = createMockStore({});
+    // We can pass any default states to the mock store
+    const store = createMockStore(defaultAuthState);
 
     const id = expenses[0].id;
 
@@ -48,7 +52,7 @@ test('Should remove expense from database and dispatch action to store', (done) 
                 id
             });
 
-            return database.ref(`expenses/${id}`).once('value');
+            return database.ref(`users/${uid}/expenses/${id}`).once('value');
         })
         .then((snapshot) => {
             expect(snapshot.val()).toBeFalsy();
@@ -70,7 +74,7 @@ test('Should setup edit expense action object', () => {
 });
 
 test('Should set edit expense in databse and dispatch action to store', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
 
     const id = expenses[0].id
 
@@ -94,7 +98,7 @@ test('Should set edit expense in databse and dispatch action to store', (done) =
                 updates
             });
 
-            return database.ref(`expenses/${id}`).once('value');
+            return database.ref(`users/${uid}/expenses/${id}`).once('value');
         })
         .then((snapshot) => {
             const expenseVal = snapshot.val();
@@ -121,7 +125,7 @@ test('Should setup add expense action object with PROVIDED values', () => {
 // So we use (done) --> which tells Jest that this test will not be considered success or failure untill after we call done()
 test('Should add expense to database and store with PROVIDED values', (done) => {
 
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     const expense = {
         description: expenses[0].description,
         amount: expenses[0].amount,
@@ -138,7 +142,7 @@ test('Should add expense to database and store with PROVIDED values', (done) => 
             }));
 
             // Since database returns a promise. Same as return new promise((resolve, reject) => {})
-            return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+            return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value');
         })
         .then((snapshot) => {
             const val = snapshot.val();
@@ -152,7 +156,7 @@ test('Should add expense to database and store with PROVIDED values', (done) => 
 
 test('Should add expense to database and store with DEFAULT values', (done) => {
 
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     const expenseDafaults = {
         description: '',
         amount: 0,
@@ -169,7 +173,7 @@ test('Should add expense to database and store with DEFAULT values', (done) => {
             }));
 
             // Since database returns a promise. Same as return new promise((resolve, reject) => {})
-            return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+            return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value');
         })
         .then((snapshot) => {
             const val = snapshot.val();
@@ -191,7 +195,7 @@ test('Should set action object for setExpenses action', () => {
 
 test('Should dispatch setExpenses action using database expenses', (done)=>{
 
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     
     store.dispatch(startSetExpenses()).then(() => {
         const actions = store.getActions();

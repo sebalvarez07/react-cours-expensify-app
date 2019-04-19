@@ -3,11 +3,11 @@ import { Router, Route, Switch } from 'react-router-dom';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import EditExpensePage from '../components/EditExpensePage';
 import AddExpensePage from '../components/AddExpensePage';
-import HelpPage from '../components/HelpPage';
 import NotFoundPage from '../components/NotFoundPage';
 import LoginPage  from '../components/LoginPage';
 import { createBrowserHistory } from 'history';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 export const history = createBrowserHistory();
 
@@ -23,7 +23,7 @@ const AppRouter = () => (
                 Every component passed as a Route component has a access to a variety of props such as history, 
                 which allow functionalities, such as re-directs to happen
             */}
-            <Route path="/" exact={true} component={LoginPage} />
+            <PublicRoute path="/" exact={true} component={LoginPage} />
             <PrivateRoute path="/dashboard" component={ExpenseDashboardPage} />
             <PrivateRoute path="/create" component={AddExpensePage} />
             {/* 
