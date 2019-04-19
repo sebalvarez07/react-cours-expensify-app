@@ -68,4 +68,8 @@
 
 .list-item__amount {
     margin: $s-size 0 0 0; 
+
+    @media (min-width: $desktop-breakpoint) {
+        margin: 0; 
+    }
 }
