@@ -5,10 +5,11 @@ import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetExpenses } from './actions/expenses';
 import 'normalize.css/normalize.css';
+import 'react-dates/lib/css/_datepicker.css';
 import './styles/styles.scss';
-import 'react-dates/lib/css/_datepicker.css'; 
 import { firebase } from './firebase/firebase';
 import { login, logout } from './actions/auth';
+import LoadingPage from './components/LoadingPage';
 
 
 const store = configureStore();
@@ -34,7 +35,7 @@ const renderApp = () => {
 };
 
 // Render loading screen
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 // Redirection functionality --> This triggers on load, as firebase dispatches the current state on load. See redux tools to see this happening live.
 firebase.auth().onAuthStateChanged((user) => {
@@ -54,5 +55,3 @@ firebase.auth().onAuthStateChanged((user) => {
         history.push('/');
     }
 });
-
-

@@ -2,30 +2,27 @@
 
 exports[`Should render ExpenseForm using data 1`] = `
 <form
+  className="form"
   onSubmit={[Function]}
 >
-  <label>
-    Description
-  </label>
   <input
+    className="text-input"
     name="description"
     onChange={[Function]}
+    placeholder="Description"
     type="text"
     value="Gum"
   />
-  <label>
-    Amount
-  </label>
   <input
+    className="text-input"
     name="amount"
     onChange={[Function]}
+    placeholder="Amount"
     type="text"
     value="1.95"
   />
-  <label>
-    Note
-  </label>
   <textarea
+    className="text-area"
     name="note"
     onChange={[Function]}
     placeholder="Add a note for your expense (optional)"
@@ -107,38 +104,39 @@ exports[`Should render ExpenseForm using data 1`] = `
     withFullScreenPortal={false}
     withPortal={false}
   />
-  <button>
-    Add Expense
-  </button>
+  <div>
+    <button
+      class="btn btn--blue"
+    >
+      Save Expense
+    </button>
+  </div>
 </form>
 `;
 
 exports[`Should render error for invalid form submission 1`] = `
 <form
+  className="form"
   onSubmit={[Function]}
 >
-  <label>
-    Description
-  </label>
   <input
+    className="text-input"
     name="description"
     onChange={[Function]}
+    placeholder="Description"
     type="text"
     value=""
   />
-  <label>
-    Amount
-  </label>
   <input
+    className="text-input"
     name="amount"
     onChange={[Function]}
+    placeholder="Amount"
     type="text"
     value=""
   />
-  <label>
-    Note
-  </label>
   <textarea
+    className="text-area"
     name="note"
     onChange={[Function]}
     placeholder="Add a note for your expense (optional)"
@@ -220,41 +218,44 @@ exports[`Should render error for invalid form submission 1`] = `
     withFullScreenPortal={false}
     withPortal={false}
   />
-  <button>
-    Add Expense
-  </button>
+  <div>
+    <button
+      class="btn btn--blue"
+    >
+      Save Expense
+    </button>
+  </div>
 </form>
 `;
 
 exports[`Should render error for invalid form submission 2`] = `
 <form
+  className="form"
   onSubmit={[Function]}
 >
-  <h3>
+  <h3
+    className="form__error"
+  >
     Please provide a description and amount
   </h3>
-  <label>
-    Description
-  </label>
   <input
+    className="text-input"
     name="description"
     onChange={[Function]}
+    placeholder="Description"
     type="text"
     value=""
   />
-  <label>
-    Amount
-  </label>
   <input
+    className="text-input"
     name="amount"
     onChange={[Function]}
+    placeholder="Amount"
     type="text"
     value=""
   />
-  <label>
-    Note
-  </label>
   <textarea
+    className="text-area"
     name="note"
     onChange={[Function]}
     placeholder="Add a note for your expense (optional)"
@@ -336,38 +337,39 @@ exports[`Should render error for invalid form submission 2`] = `
     withFullScreenPortal={false}
     withPortal={false}
   />
-  <button>
-    Add Expense
-  </button>
+  <div>
+    <button
+      class="btn btn--blue"
+    >
+      Save Expense
+    </button>
+  </div>
 </form>
 `;
 
 exports[`Should render expense using default values 1`] = `
 <form
+  className="form"
   onSubmit={[Function]}
 >
-  <label>
-    Description
-  </label>
   <input
+    className="text-input"
     name="description"
     onChange={[Function]}
+    placeholder="Description"
     type="text"
     value=""
   />
-  <label>
-    Amount
-  </label>
   <input
+    className="text-input"
     name="amount"
     onChange={[Function]}
+    placeholder="Amount"
     type="text"
     value=""
   />
-  <label>
-    Note
-  </label>
   <textarea
+    className="text-area"
     name="note"
     onChange={[Function]}
     placeholder="Add a note for your expense (optional)"
@@ -449,8 +451,12 @@ exports[`Should render expense using default values 1`] = `
     withFullScreenPortal={false}
     withPortal={false}
   />
-  <button>
-    Add Expense
-  </button>
+  <div>
+    <button
+      class="btn btn--blue"
+    >
+      Save Expense
+    </button>
+  </div>
 </form>
 `;

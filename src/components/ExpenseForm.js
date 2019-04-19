@@ -89,28 +89,28 @@ class ExpenseForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-
-                {this.state.error && <h3>{this.state.error}</h3>}
-
-                <label>Description</label>
+            <form className="form" onSubmit={this.handleSubmit}>
+                {this.state.error && <h3 className="form__error">{this.state.error}</h3>} 
                 <input 
+                    placeholder="Description"
+                    className="text-input"
                     type="text" 
                     name="description" 
                     value={this.state.description}
                     onChange={this.onDescriptionChange}
                 />
         
-                <label>Amount</label>
                 <input 
+                    placeholder="Amount"
+                    className="text-input"
                     type="text" 
                     name="amount"
                     value={this.state.amount}
                     onChange={this.onAmountChange}
                 />
-        
-                <label>Note</label>
+
                 <textarea 
+                    className="text-area"
                     name="note"
                     placeholder="Add a note for your expense (optional)"
                     value={this.state.note}
@@ -126,7 +126,11 @@ class ExpenseForm extends React.Component {
                     isOutsideRange={() => false}
                 />
         
-                <button>Add Expense</button>
+                <div>
+                    <button class="btn btn--blue">
+                        Save Expense
+                    </button>
+                </div>
             </form>
         )
     }
