@@ -127,7 +127,7 @@ class ExpenseForm extends React.Component {
                 />
         
                 <div>
-                    <button class="btn btn--blue">
+                    <button className="btn btn--blue">
                         Save Expense
                     </button>
                 </div>

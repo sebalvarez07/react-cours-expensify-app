@@ -1,6 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render summary with 1 expense 1`] = `
+exports[`Should render summary with 1 expense and 0 hidden expenses  1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h2
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        1
+      </span>
+       
+      expense
+       totaling 
+      <span>
+        $1.00
+      </span>
+    </h2>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="btn btn--blue"
+        to="/create"
+      >
+         Add Expense 
+      </Link>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Should render summary with 1 expense and 5 hidden expenses  1`] = `
 <div
   className="page-header"
 >
