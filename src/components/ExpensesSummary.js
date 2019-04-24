@@ -21,7 +21,6 @@ export const ExpensesSummary = ({expenseCount, expensesTotal, allExpenses}) => {
                 { allExpenses.length - expenseCount > 0 && 
                     <p>Not showing {allExpenses.length - expenseCount} expenses due to filters being applied</p>
                 }
-                
             </div>
         </div>
     )
